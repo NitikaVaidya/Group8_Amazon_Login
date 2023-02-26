@@ -11,7 +11,6 @@ Feature: Login into Amazon feature
     When the user enters the invalid user name
     Then the user can not login into amazon
 
-
     Scenario: User can access My orders
       Given the user navigates to the account page
       When the user click on my order
@@ -19,7 +18,13 @@ Feature: Login into Amazon feature
 
 
     Scenario: User can access security
-      Given the user navigates to the accountpage
-      When the user click on security
-      Then the user navigates to login and security page
+      Given the user navigates to the amazon home page
+      When the user click on search bar
+      Then the user search required objectgi
 
+  Scenario: User can access search bar
+    Given the user navigates to the accountpage
+    When the user click on security
+    Then the user navigates to login and security page
+
+//Scenario Outline: User can search
