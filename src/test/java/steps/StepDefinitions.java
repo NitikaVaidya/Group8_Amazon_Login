@@ -7,12 +7,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import pages.HomePage;
-import pages.InvalidUser;
-import pages.Order;
-import pages.Security;
+import pages.*;
 import utils.BrowserManager;
 import utils.QaProps;
 import utils.TestDataReader;
@@ -32,6 +30,8 @@ public class StepDefinitions {
     Security security;
 
     Order order;
+
+    Search search;
 
     HashMap<String, String> data;
     Scenario scenario;
@@ -58,11 +58,12 @@ public class StepDefinitions {
     @When("the user enters the valid user name")
     public void the_user_enters_the_valid_user_name() throws InterruptedException {
         homePage = new HomePage(driver);
-        // explicit wait to add Thread.sleep(5000);
+
         WebDriverWait wait = new WebDriverWait(driver,20);
         homePage.getLoginPage().click();
-        //data= TestDataReader.getData(scenario.getId());
-        //homePage.getEmail().sendKeys(data.get("Typevalue"));
+        //data = TestDataReader.getData("Verify that user is able to login");
+        //data= TestDataReader.getData(scenario.getName());
+        //homePage.getEmail().sendKeys(data.get("TypeValue"));
         homePage.getEmail().sendKeys("9424624521");
         homePage.getClick().click();
         homePage.getPassword().sendKeys("Amazon@000");
@@ -152,8 +153,7 @@ public class StepDefinitions {
     @When("the user enters the invalid user name")
     public void the_user_enter_invalid_user_name(){
         invalidUser = new InvalidUser(driver);
-        //Thread.sleep(5000);
-        invalidUser.getLoginPage1().click();
+                invalidUser.getLoginPage1().click();
         invalidUser.getEmail1().sendKeys("9424624521");
         invalidUser.getClick1().click();
         invalidUser.getPassword1().sendKeys("Amazon#00");
@@ -167,5 +167,25 @@ public class StepDefinitions {
         System.out.println("Invalid User Details");
 
 
+    }
+
+
+    @Given("the user navigates to the amazon home page")
+    public void the_user_navigates_to_the_amazon_home_page(){
+        url = QaProps.getValue("url");
+        driver.get(url);
+    }
+
+    @When("the user click on search bar {string} .")
+    public void the_user_click_on_search_bar(String srg0){
+        search = new Search(driver);
+        search.getSearchBar().sendKeys(srg0);
+        search.getClickSearch().sendKeys(Keys.ENTER);
+
+    }
+
+    @Then("the user find required object")
+    public void the_user_find_required_object(){
+        //Assert.assertTrue(driver.getCurrentUrl().contains("https://www.amazon.in/"));
     }
 }
