@@ -64,7 +64,7 @@ public class StepDefinitions {
         //data = TestDataReader.getData("Verify that user is able to login");
         //data= TestDataReader.getData(scenario.getName());
         //homePage.getEmail().sendKeys(data.get("TypeValue"));
-        homePage.getEmail().sendKeys("9424624521");
+        homePage.getEmail().sendKeys("nitikav0706@gmail.com");
         homePage.getClick().click();
         homePage.getPassword().sendKeys("Amazon@000");
         homePage.getLoginResult().click();
@@ -106,7 +106,6 @@ public class StepDefinitions {
         WebDriverWait wait = new WebDriverWait(driver,20);
 
         Assert.assertTrue(driver.getCurrentUrl().contains("https://www.amazon.in/"));
-        //Assert.assertTrue(driver.getCurrentUrl().contains("https://www.amazon.in/"));
 
 
     }

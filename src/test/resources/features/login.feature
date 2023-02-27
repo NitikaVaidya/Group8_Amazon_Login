@@ -12,6 +12,7 @@ Feature: Login into Amazon feature
     When the user enters the invalid user name
     Then the user can not login into amazon
 
+
     Scenario: User can access My orders
       Given the user navigates to the account page
       When the user click on my order
